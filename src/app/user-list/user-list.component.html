@@ -1,0 +1,42 @@
+<div class="container-fluid text-center bg-secondary text-white " style="height: 3rem;">
+    <a class="navbar-brand text-center text-white "
+      style="display: flex;justify-content: center; align-items: center;">Crud Application</a>
+  
+  </div>
+  
+  <div class="container mt-1">
+    <div class="addUser">
+      <button class="btn btn-primary" [routerLink]="['/addUser']">Add New User</button>
+    </div>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Role</th>
+          <th  scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of userslist;let i=index">
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.name |titlecase}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.role}}</td>
+          <td> <button class="btn btn-outline-primary" (click)="updateRecord(item.id)"  ><i class="fas fa-edit"></i></button>&nbsp;
+            <button class="btn btn-outline-danger"  (click)="deleteUser(i)"> <i class="fas fa-trash-alt"></i></button>
+          </td> 
+        
+          
+        </tr>
+  
+      </tbody>
+    </table>
+  
+  
+  </div>
+  
+  
+  

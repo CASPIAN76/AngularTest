@@ -1,0 +1,50 @@
+
+ 
+<button type="button" class="btn btn-outline-primary"  [routerLink]="['/userlist']"><i class="far fa-arrow-alt-circle-left"></i>Back To User List</button>
+<div class="container min_page">
+
+    <div class="formdata   mt-4">
+
+        <h2 class="text-center">{{ id === 0 ?'Add New User' :'Update User'}}</h2>
+        <form [formGroup]="addUserForm">
+
+
+            <div class="form-group mt-2">
+                <label for="name">Name :</label>
+                <input type="text" class="form-control" id="name"  placeholder="Enter Name"  appCharecter  formControlName="name">
+                <div   *ngIf="( validation?.['name']?.touched ||submited) && validation['name']?.invalid "   >
+                <div  class="text-danger" *ngIf="validation?.['name']?.hasError?.('required')"> Name is required</div>
+                <div  class="text-danger"  *ngIf="validation?.['name']?.hasError?.('maxlength')"> Maximum 100  charecter  required</div>
+                <div  class="text-danger"  *ngIf="validation?.['name']?.hasError?.('minlength')"> Minimum  3  charecter required</div>
+            </div>
+
+            </div>
+            <div class="form-group mt-2">
+                <label for="email">Email :</label>
+                <input type="text"  placeholder="Enter Email" class="form-control" id="email" formControlName="email">
+                <div   *ngIf="(validation?.['email']?.touched || submited) && validation?.['email']?.invalid ">
+                  <div class="text-danger" *ngIf="validation?.['email']?.hasError?.('required')" >  Please enter valid Email </div>
+                  <div  class="text-danger"  *ngIf="validation?.['email']?.hasError?.('email')">Please enter valid Email</div>
+                </div>
+            </div>
+
+            <div class="form-group mt-2">
+
+                <label for="Role">Role :</label>
+                <select class="form-select" aria-label="Default select example" id="Role" formControlName="role">
+                    <option selected value="">Select Role</option>
+                    <option *ngFor="let item of roles" [ngValue]="item">{{item}}</option>
+
+                </select>
+                <div  class="text-danger" *ngIf="(validation?.['role']?.touched || submited) && validation?.['role']?.invalid "   >
+                    <div class="text-danger"   *ngIf="validation?.['role']?.hasError?.('required')">  Role is required </div>
+                </div>
+            </div>
+            <div class="sub-button">
+                <button  class="btn btn-primary mt-2" (click)="id===0 ?  onSubmit() :onUpdate(id) ">{{id===0 ? 'Submit':'Update'}}</button>
+
+            </div>
+        </form>
+
+    </div>
+</div>
