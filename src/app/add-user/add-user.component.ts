@@ -66,7 +66,7 @@ export class AddUserComponent  implements OnInit {
     Swal.fire({
       position: "top-end",
       icon: "success",
-      title: "Your work has been saved",
+      title: "User added successfully",
       showConfirmButton: false,
       timer: 1500
     });
@@ -90,7 +90,7 @@ export class AddUserComponent  implements OnInit {
         this.userService.onUpdateUser(id, this.addUserForm.value)
         this.router.navigate(['/userlist'])
 
-        Swal.fire("Saved!", "", "success");
+        Swal.fire("User Updated!", "", "success");
       } else if (result.isDenied) {
           this.getByUserid()
         Swal.fire("Changes are not saved", "", "info");

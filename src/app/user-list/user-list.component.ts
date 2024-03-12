@@ -39,7 +39,7 @@ export class UserListComponent implements OnInit {
         this.user.deleteUser(id)
         Swal.fire({
           title: "Deleted!",
-          text: "Your Record has been deleted.",
+          text: "User has been deleted.",
           icon: "success"
         });
       }
